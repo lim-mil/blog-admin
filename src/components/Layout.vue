@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-aside>
-
-    </el-aside>
+    <SideBar></SideBar>
     <el-container>
       <el-header></el-header>
       <el-header></el-header>
@@ -15,11 +13,16 @@
 </template>
 
 <script>
+  import SideBar from "./SideBar";
   export default {
-    name: "Layout"
+    name: "Layout",
+    components: {SideBar}
   }
 </script>
 
-<style scoped>
+<style scoped lang="stylus">
+.left-container
+  width 220px
+
 
 </style>
