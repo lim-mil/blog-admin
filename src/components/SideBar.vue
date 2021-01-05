@@ -1,7 +1,7 @@
 <template>
   <div class="side-bar">
     <div class="logo-wrapper">
-      limyel-blog
+      limyel
     </div>
     <el-menu
         default-active="2"
@@ -69,7 +69,7 @@
     height 5vh
     text-align center
     line-height 5vh
-    font-size 30px
+    font-size 2em
     color lightgray
 
 </style>
