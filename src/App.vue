@@ -5,7 +5,8 @@
 </template>
 
 <script>
-  import Layout from "./components/Layout";
+  import 'element-ui/lib/theme-chalk/index.css'
+  import Layout from "./views/Layout";
   export default {
     components: {Layout}
   }
@@ -13,5 +14,5 @@
 </script>
 
 <style lang="stylus">
-
+@import "assets/css/base.styl"
 </style>
