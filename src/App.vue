@@ -15,6 +15,7 @@
 
 <style lang="stylus">
 @import "assets/css/base.styl"
+/*@import "assets/css/bulma.css"*/
 #app
   width 100%
   height 100%
