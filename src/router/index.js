@@ -16,7 +16,7 @@ const routes = [
     children: [
       {
         path: 'posts',
-        component: () => import('../views/BlogPost')
+        component: () => import('../views/BlogPosts')
       },
       {
         path: 'categories',

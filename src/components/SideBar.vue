@@ -73,4 +73,7 @@
     font-size 1.5em
     color #B0C4DE
 
+.el-menu--collapse .el-menu .el-submenu, .el-menu--popup, .el-menu-item
+  min-width 100%!important
+
 </style>

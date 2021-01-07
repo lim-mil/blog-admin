@@ -12,6 +12,12 @@ import {
   DropdownItem,
   Breadcrumb,
   BreadcrumbItem,
+  Input,
+  Button,
+  Row,
+  Col,
+  Select,
+  Option
 } from 'element-ui'
 
 Vue.use(Container)
@@ -26,3 +32,9 @@ Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Select)
+Vue.use(Option)
