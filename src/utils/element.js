@@ -17,7 +17,10 @@ import {
   Row,
   Col,
   Select,
-  Option
+  Option,
+  Table,
+  TableColumn,
+  Tag
 } from 'element-ui'
 
 Vue.use(Container)
@@ -38,3 +41,6 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Tag)
