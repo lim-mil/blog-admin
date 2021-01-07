@@ -11,6 +11,6 @@ name: "BlogCategory"
 </script>
 
 <style lang="stylus">
-.blog-category
+
   
 </style>

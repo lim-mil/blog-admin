@@ -15,8 +15,12 @@ const routes = [
     component: () => import('../views/Layout'),
     children: [
       {
-        path: 'post',
+        path: 'posts',
         component: () => import('../views/BlogPost')
+      },
+      {
+        path: 'categories',
+        component: () => import('../views/BlogCategory')
       }
     ]
   },
