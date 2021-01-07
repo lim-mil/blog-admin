@@ -2,14 +2,19 @@
   <div class="top-bar">
     <ul class="top-menu">
       <li>
-        <el-dropdown trigger="click">
-          <span class="el-dropdown-link userinfo">
-            admin
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>退出</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        <span class="userinfo">
+          退出
+        </span>
+      </li>
+      <li>
+        <span class="userinfo">
+          admin
+        </span>
+      </li>
+      <li>
+        <span class="userinfo">
+          通知
+        </span>
       </li>
     </ul>
   </div>
@@ -36,6 +41,11 @@ name: "TopBar"
     float right
     text-align center
     padding-right 1%
+    width 100%
+
+    li
+      float right
+      margin-left 1%
 
     .userinfo
       cursor: pointer;

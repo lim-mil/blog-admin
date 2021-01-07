@@ -1,7 +1,7 @@
 <template>
   <div class="side-bar">
     <div class="logo-wrapper">
-      limyel-blog
+      limyel
     </div>
     <el-menu
         default-active="2"
