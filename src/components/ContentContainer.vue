@@ -20,9 +20,7 @@ name: "ContentContainer"
   top 5vh
   left 12%
   padding 0.5%
-  height 95vh
+  overflow auto
+  //height 95vh
 
-  .content
-    height 100%
-    overflow auto
 </style>

@@ -36,6 +36,7 @@ name: "TopBar"
   height 5vh
   line-height 5vh
   box-shadow 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
+  z-index 12
 
   .top-menu
     float right

@@ -57,12 +57,13 @@
   bottom 0
   left 0
   width 12%
-  height 100vh
+  //height 100vh
   background-color #545c64
+  z-index 11
 
   .el-menu
     width 100%
-    height 95vh
+    //height 95vh
 
   .logo-wrapper
     width 100%

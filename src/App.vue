@@ -15,4 +15,8 @@
 
 <style lang="stylus">
 @import "assets/css/base.styl"
+#app
+  width 100%
+  height 100%
+  background-color #D3D3D3
 </style>

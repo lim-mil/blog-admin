@@ -1,22 +1,37 @@
 <template>
-  <div>
+  <div class="layout">
     <SideBar></SideBar>
-    <MainContainer></MainContainer>
+    <TopBar></TopBar>
+    <div class="main-container">
+      <ContentContainer></ContentContainer>
+    </div>
+
   </div>
 </template>
 
 <script>
   import SideBar from "../components/SideBar";
-  import MainContainer from "@/components/MainContainer";
+  import TopBar from "@/components/TopBar";
+  import ContentContainer from "@/components/ContentContainer";
   export default {
     name: "Layout",
-    components: {MainContainer, SideBar}
+    components: {SideBar, TopBar, ContentContainer}
   }
 </script>
 
 <style scoped lang="stylus">
+.layout
+  width 100%
+  height 100vh
 
-
+  .main-container
+    position: fixed
+    left 12%
+    top 0
+    bottom 0
+    right 0
+    width 100%
+    padding 1%
 
 
 </style>
