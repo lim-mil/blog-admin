@@ -69,7 +69,7 @@
     height 5vh
     text-align center
     line-height 5vh
-    font-size 30px
-    color lightgray
+    font-size 1.5em
+    color #B0C4DE
 
 </style>

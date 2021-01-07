@@ -2,15 +2,17 @@
   <div class="main-container">
     <TopBar></TopBar>
     <BreadBar></BreadBar>
+    <ContentContainer></ContentContainer>
   </div>
 </template>
 
 <script>
 import TopBar from "@/components/TopBar";
 import BreadBar from "@/components/BreadBar";
+import ContentContainer from "@/components/ContentContainer";
 export default {
 name: "MainContainer",
-  components: {BreadBar, TopBar}
+  components: {ContentContainer, BreadBar, TopBar}
 }
 </script>
 
