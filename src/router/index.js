@@ -20,7 +20,22 @@ const routes = [
       },
       {
         path: 'categories',
-        component: () => import('../views/BlogCategory')
+        component: () => import('../views/BlogCategories')
+      }
+    ]
+  },
+  {
+    path: '/project',
+    name: 'project',
+    component: () => import('../views/Layout'),
+    children: [
+      {
+        path: 'projects',
+        component: () => import('../views/ProjectProjects')
+      },
+      {
+        path: 'categories',
+        component: () => import('../views/ProjectCategories')
       }
     ]
   },
