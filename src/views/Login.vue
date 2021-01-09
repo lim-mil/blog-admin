@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="用户名" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+  <div class="login">
+    <el-form>
+      <el-form-item label="用户名">
+        <el-input type="text"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="checkPass">
-        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+      <el-form-item label="密码">
+        <el-input type="password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
+        <el-button type="primary">登录</el-button>
+
       </el-form-item>
     </el-form>
   </div>
@@ -21,6 +21,11 @@ name: "Login"
 }
 </script>
 
-<style scoped>
+<style lang="stylus">
+.login
+  width 20%
+  margin-left 40%
+  height 30%
+  margin-top 10%
 
 </style>

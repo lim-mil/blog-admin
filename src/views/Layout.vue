@@ -23,6 +23,7 @@
 .layout
   width 100%
   height 100vh
+  background-color #D3D3D3
 
   .main-container
     position: fixed

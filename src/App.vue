@@ -17,5 +17,4 @@
 #app
   width 100%
   height 100%
-  background-color #D3D3D3
 </style>

@@ -54,4 +54,22 @@ const router = new VueRouter({
   routes
 })
 
+// eslint-disable-next-line no-unused-vars
+router.beforeEach(({name}, from, next) => {
+  // 是否需要跳转到 Login 页面
+  if (localStorage.getItem('TOKEN')) {
+    if (name === 'Login') {
+      next('/');
+    } else {
+      next();
+    }
+  } else {
+    if (name === 'Login') {
+      next();
+    } else {
+      next({name: 'Login'})
+    }
+  }
+})
+
 export default router
