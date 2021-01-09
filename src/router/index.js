@@ -7,37 +7,39 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    component: () => import('../views/Analysis')
-  },
-  {
-    path: '/blog',
-    name: 'blog',
     component: () => import('../views/Layout'),
     children: [
       {
-        path: 'posts',
+        path: 'analysis',
+        name: 'Analysis',
+        component: () => import('../views/Analysis')
+      },
+      {
+        path: 'blog/posts',
+        name: 'BlogPosts',
         component: () => import('../views/BlogPosts')
       },
       {
-        path: 'categories',
+        path: 'blog/categories',
+        name: 'BlogCategory',
         component: () => import('../views/BlogCategories')
-      }
-    ]
-  },
-  {
-    path: '/project',
-    name: 'project',
-    component: () => import('../views/Layout'),
-    children: [
+      },
       {
-        path: 'projects',
+        path: 'project/projects',
+        name: 'ProjectPorjects',
         component: () => import('../views/ProjectProjects')
       },
       {
-        path: 'categories',
+        path: 'project/categories',
+        name: 'ProjectCategories',
         component: () => import('../views/ProjectCategories')
-      }
+      },
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login')
   },
   {
     path: '/about',

@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <Layout></Layout>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import 'element-ui/lib/theme-chalk/index.css'
-  import Layout from "./views/Layout";
   export default {
-    components: {Layout}
   }
 
 </script>

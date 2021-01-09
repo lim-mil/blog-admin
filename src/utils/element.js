@@ -20,7 +20,9 @@ import {
   Option,
   Table,
   TableColumn,
-  Tag
+  Tag,
+  Form,
+  FormItem
 } from 'element-ui'
 
 Vue.use(Container)
@@ -44,3 +46,5 @@ Vue.use(Option)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Tag)
+Vue.use(Form)
+Vue.use(FormItem)
