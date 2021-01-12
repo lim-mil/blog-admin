@@ -11,17 +11,23 @@
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b">
+      <router-link :to="{name: 'Analysis'}">
       <el-menu-item index="1">
         <i class="el-icon-menu"></i>
         <span slot="title">数据统计</span>
       </el-menu-item>
+      </router-link>
 
       <el-submenu index="2">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>博客管理</span>
         </template>
-        <el-menu-item index="2-1">博客</el-menu-item>
+        <router-link :to="{name: 'BlogPosts'}">
+          <el-menu-item index="2-1">
+            博客
+          </el-menu-item>
+        </router-link>
         <el-menu-item index="2-2">博客分类</el-menu-item>
       </el-submenu>
 

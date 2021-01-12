@@ -31,10 +31,12 @@ export default {
       console.log(event);
       apiLogin(
         {username: this.username, password: this.password}
-      ).then(res => {
-        console.log(res);
-        // localStorage.setItem("JWT_TOKEN", res)
+      ).then(response => {
+        // console.log(response.data.data.access_token);
+        localStorage.setItem("JWT_TOKEN", response.data.data.access_token);
+        this.$router.push({name: "Analysis"});
       })
+
     }
   }
 }
