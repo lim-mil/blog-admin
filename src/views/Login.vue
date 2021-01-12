@@ -8,7 +8,7 @@
         <el-input v-model="password" type="password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">登录</el-button>
+        <el-button @click="login" type="primary">登录</el-button>
 
       </el-form-item>
     </el-form>
@@ -16,12 +16,25 @@
 </template>
 
 <script>
+import {apiLogin} from "../request/api";
+
 export default {
   name: "Login",
   data: () => {
     return {
       username: '',
       password: '',
+    }
+  },
+  methods: {
+    login: function (event) {
+      console.log(event);
+      apiLogin(
+        {username: this.username, password: this.password}
+      ).then(res => {
+        console.log(res);
+        // localStorage.setItem("JWT_TOKEN", res)
+      })
     }
   }
 }
