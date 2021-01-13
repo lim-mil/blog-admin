@@ -32,8 +32,8 @@ export default {
       apiLogin(
         {username: this.username, password: this.password}
       ).then(response => {
-        // console.log(response.data.data.access_token);
-        localStorage.setItem("JWT_TOKEN", response.data.data.access_token);
+        console.log(response);
+        localStorage.setItem("JWT_TOKEN", response.data.access_token);
         this.$router.push({name: "Analysis"});
       })
 

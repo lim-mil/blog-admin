@@ -12,3 +12,7 @@ export const apiLogin = p => {
   data.append("password", p.password);
   return axios.post("http://127.0.0.1:7331/api/v1/user/token", data, config);
 }
+
+export const apiPosts = () => {
+
+}

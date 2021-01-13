@@ -1,7 +1,7 @@
 <template>
   <div class="top-bar">
     <ul class="top-menu">
-      <li>
+      <li @click="logout">
         <span class="userinfo">
           退出
         </span>
@@ -22,7 +22,13 @@
 
 <script>
 export default {
-name: "TopBar"
+  name: "TopBar",
+  methods: {
+    logout: () => {
+      localStorage.clear();
+      this.$http.push({name: "Login"});
+    }
+  }
 }
 </script>
 
