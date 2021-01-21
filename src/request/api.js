@@ -1,5 +1,6 @@
 // import {post} from "./http"
 import axios from "axios";
+import {get} from "./http";
 
 export const apiLogin = p => {
   let config = {
@@ -13,6 +14,7 @@ export const apiLogin = p => {
   return axios.post("http://127.0.0.1:7331/api/v1/user/token", data, config);
 }
 
-export const apiPosts = () => {
-
+export const apiPosts = (page=1, step=20) => {
+  let url = "http://127.0.0.1:7331/api/v1/posts/?" + "page=" + page + "&" + "step=" + step;
+  return get(url);
 }

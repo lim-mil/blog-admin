@@ -22,8 +22,8 @@ export default {
   name: "Login",
   data: () => {
     return {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     }
   },
   methods: {
@@ -34,6 +34,7 @@ export default {
       ).then(response => {
         console.log(response);
         localStorage.setItem("JWT_TOKEN", response.data.access_token);
+        localStorage.setItem("username", response.data.username);
         this.$router.push({name: "Analysis"});
       })
 

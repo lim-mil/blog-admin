@@ -27,13 +27,15 @@ axios.interceptors.response.use(
   },
   error => {
     if (error.response) {
-      console.log(error.response.statusCode);
-      switch (error.response.statusCode) {
+      switch (error.response.status) {
         case 401:
+          localStorage.removeItem("JWT_TOKEN");
+          localStorage.removeItem("username");
           router.replace({
             path: "Login",
             query: {redirect: router.currentRoute.fullPath}
           });
+          break;
       }
     }
     return Promise.reject(error.response.data);

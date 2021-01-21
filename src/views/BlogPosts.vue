@@ -3,7 +3,7 @@
     <div class="tools">
       <el-row :gutter="20">
         <el-col :span="2">
-          <p>6 Posts</p>
+          <p>{{posts_num}} Posts</p>
         </el-col>
         <el-col :span="5">
           <el-input placeholder="Search" v-model="input3" class="input-with-select">
@@ -33,11 +33,11 @@
     <div class="posts">
       <el-table
           ref="filterTable"
-          :data="tableData"
+          :data="posts"
           style="width: 100%">
         <el-table-column
-            prop="date"
-            label="日期"
+            prop="created"
+            label="创建日期"
             sortable
             width="180"
             column-key="date"
@@ -46,26 +46,29 @@
         >
         </el-table-column>
         <el-table-column
-            prop="name"
-            label="姓名"
+            prop="title"
+            label="标题"
             width="180">
         </el-table-column>
         <el-table-column
-            prop="address"
-            label="地址"
+            prop="status"
+            label="状态"
             :formatter="formatter">
         </el-table-column>
         <el-table-column
-            prop="tag"
-            label="标签"
-            width="100"
-            :filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
-            :filter-method="filterTag"
-            filter-placement="bottom-end">
+            prop="category.name"
+            label="分类"
+            :formatter="formatter">
+        </el-table-column>
+        <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-tag
-                :type="scope.row.tag === '家' ? 'primary' : 'success'"
-                disable-transitions>{{scope.row.tag}}</el-tag>
+            <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button
+                size="mini"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -74,10 +77,13 @@
 </template>
 
 <script>
+import {apiPosts} from "../request/api";
+
 export default {
   name: "BlogPosts",
   data() {
     return {
+      posts: [],
       options: [{
         value: '选项1',
         label: '黄金糕'
@@ -94,28 +100,43 @@ export default {
         value: '选项5',
         label: '北京烤鸭'
       }],
-      value: '',
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-        tag: '家'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄',
-        tag: '公司'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄',
-        tag: '家'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄',
-        tag: '公司'
-      }]
+      value: ''
+    }
+  },
+  mounted() {
+    apiPosts().then(response => {
+      let data = response.data;
+      for (let i = 0; i < data.length; i++) {
+        // 时间戳转换为字符串
+        let created = new Date(data[i].created * 1000);
+        data[i].created = created.getFullYear() + "-" + (created.getMonth()+1) + "-" + created.getDate() + " " + created.getHours() + ":" + created.getMinutes() + ":" + created.getSeconds();
+        let updated = new Date(data[i].updated * 1000);
+        data[i].updated = updated.getFullYear() + "-" + (updated.getMonth()+1) + "-" + updated.getDate() + " " + updated.getHours() + ":" + updated.getMinutes() + ":" + created.getSeconds();
+
+        // 状态转换
+        switch (data[i].status) {
+          case 0:
+            data[i].status = "草稿";
+            break;
+          case 1:
+            data[i].status = "已发布";
+            break;
+          case 2:
+            data[i].status = "删除";
+        }
+
+
+      }
+      this.posts = data;
+      console.log(data)
+    })
+  },
+  methods: {
+
+  },
+  computed: {
+    posts_num: function() {
+      return this.posts.length;
     }
   }
 }

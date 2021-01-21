@@ -8,7 +8,7 @@
       </li>
       <li>
         <span class="userinfo">
-          admin
+          {{username}}
         </span>
       </li>
       <li>
@@ -23,11 +23,19 @@
 <script>
 export default {
   name: "TopBar",
+  data: () => {
+    return {
+      username: "",
+    }
+  },
   methods: {
     logout: () => {
       localStorage.clear();
       this.$http.push({name: "Login"});
     }
+  },
+  mounted() {
+    this.username = localStorage.getItem("username");
   }
 }
 </script>
