@@ -3,7 +3,7 @@ import Vue from "vue";
 import QS from "qs";
 import router from "../router"
 
-axios.defaults.baseURL = "http://localhost:7331";
+axios.defaults.baseURL = "http://localhost:7331/api/v1";
 axios.defaults.headers.post['Content-Type'] = "application/json";
 axios.defaults.timeout = 10000;
 

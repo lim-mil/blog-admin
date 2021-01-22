@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     logout: () => {
-      localStorage.clear();
+      localStorage.removeItem("username");
+      localStorage.removeItem("JWT_TOKEN");
       this.$http.push({name: "Login"});
     }
   },

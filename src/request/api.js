@@ -15,6 +15,11 @@ export const apiLogin = p => {
 }
 
 export const apiPosts = (page=1, step=20) => {
-  let url = "http://127.0.0.1:7331/api/v1/posts/?" + "page=" + page + "&" + "step=" + step;
+  let url = "/posts/?" + "page=" + page + "&" + "step=" + step;
   return get(url);
+}
+
+export const apiPost = (post_id) => {
+  let url = "/posts/" + post_id;
+  return get(url)
 }
