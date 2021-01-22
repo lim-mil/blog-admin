@@ -20,6 +20,11 @@ const routes = [
         component: () => import('../views/BlogPosts')
       },
       {
+        path: 'blog/posts/:post_id',
+        name: 'EditPost',
+        component: () => import('../views/EditPost')
+      },
+      {
         path: 'blog/categories',
         name: 'BlogCategory',
         component: () => import('../views/BlogCategories')

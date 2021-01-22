@@ -24,4 +24,8 @@ name: "ContentContainer"
   //height 95vh
   z-index 10
 
+  .content
+    width 100%
+    height 100%
+
 </style>

@@ -124,15 +124,14 @@ export default {
           case 2:
             data[i].status = "删除";
         }
-
-
       }
       this.posts = data;
-      console.log(data)
     })
   },
   methods: {
-
+    handleEdit: function(index, row) {
+      this.$router.push({"name": "EditPost", params: {post_id: row.id}})
+    }
   },
   computed: {
     posts_num: function() {
