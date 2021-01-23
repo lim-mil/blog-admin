@@ -21,5 +21,10 @@ export const apiPosts = (page=1, step=20) => {
 
 export const apiPost = (post_id) => {
   let url = "/posts/" + post_id;
-  return get(url)
+  return get(url);
+}
+
+export const apiPostCategoriesSimple = () => {
+  let url = "/posts/categories/simple";
+  return get(url);
 }
