@@ -30,7 +30,7 @@
       </el-row>
 
     </div>
-    <div class="posts">
+    <div class="main-content">
       <el-table
           ref="filterTable"
           :data="posts"
@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     handleEdit: function(index, row) {
-      this.$router.push({"name": "EditPost", params: {post_id: row.id}})
+      this.$router.push({name: "EditPost", params: {post_id: row.id}})
     }
   },
   computed: {
@@ -146,7 +146,7 @@ export default {
   height 100%
   width 100%
 
-  .tools, .posts
+  .tools, .main-content
     background-color #fff
     box-shadow 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
 
@@ -157,7 +157,7 @@ export default {
     line-height 5vh
     text-align center
 
-  .posts
+  .main-content
     margin-top 1%
     width 100%
     height 95vh

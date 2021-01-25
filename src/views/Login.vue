@@ -9,7 +9,6 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="login" type="primary">登录</el-button>
-
       </el-form-item>
     </el-form>
   </div>
@@ -27,15 +26,18 @@ export default {
     }
   },
   methods: {
+    // eslint-disable-next-line no-unused-vars
     login: function (event) {
-      console.log(event);
       apiLogin(
         {username: this.username, password: this.password}
       ).then(response => {
-        console.log(response);
         localStorage.setItem("JWT_TOKEN", response.data.access_token);
         localStorage.setItem("username", response.data.username);
         this.$router.push({name: "Analysis"});
+      }).catch(error => {
+        this.username = "";
+        this.password = "";
+        this.$message.error(error.message);
       })
 
     }

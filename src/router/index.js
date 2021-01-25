@@ -15,29 +15,39 @@ const routes = [
         component: () => import('../views/Analysis')
       },
       {
-        path: 'blog/posts',
-        name: 'BlogPosts',
-        component: () => import('../views/BlogPosts')
+        path: 'posts',
+        name: 'Posts',
+        component: () => import('../views/Posts')
       },
       {
-        path: 'blog/posts/:post_id',
+        path: 'posts/categories',
+        name: 'PostCategories',
+        component: () => import('../views/PostCategories')
+      },
+      {
+        path: 'posts/:post_id',
         name: 'EditPost',
         component: () => import('../views/EditPost')
       },
       {
-        path: 'blog/categories',
-        name: 'BlogCategory',
-        component: () => import('../views/BlogCategories')
+        path: 'posts/categories/:post_category_id',
+        name: 'EditPostCategory',
+        component: () => import("../views/EditPostCategory")
       },
       {
-        path: 'project/projects',
-        name: 'ProjectPorjects',
-        component: () => import('../views/ProjectProjects')
+        path: 'projects',
+        name: 'Projects',
+        component: () => import('../views/Projects')
       },
       {
-        path: 'project/categories',
+        path: 'projects/categories',
         name: 'ProjectCategories',
         component: () => import('../views/ProjectCategories')
+      },
+      {
+        path: "projects/:project_id",
+        name: "EditProject",
+        component: () => import("../views/EditProject")
       },
     ]
   },

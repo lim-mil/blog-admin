@@ -23,12 +23,17 @@
           <i class="el-icon-location"></i>
           <span>博客管理</span>
         </template>
-        <router-link :to="{name: 'BlogPosts'}">
+        <router-link :to="{name: 'Posts'}">
           <el-menu-item index="2-1">
             博客
           </el-menu-item>
         </router-link>
-        <el-menu-item index="2-2">博客分类</el-menu-item>
+        <router-link :to="{name: 'PostCategories'}">
+          <el-menu-item index="2-2">
+            博客分类
+          </el-menu-item>
+        </router-link>
+
       </el-submenu>
 
       <el-submenu index="3">
@@ -36,8 +41,17 @@
           <i class="el-icon-location"></i>
           <span>项目管理</span>
         </template>
-        <el-menu-item index="3-1">项目</el-menu-item>
-        <el-menu-item index="3-2">项目分类</el-menu-item>
+        <router-link :to="{name: 'Projects'}">
+          <el-menu-item index="3-1">
+            项目
+          </el-menu-item>
+        </router-link>
+        <router-link :to="{name: 'ProjectCategories'}">
+          <el-menu-item index="3-2">
+            项目分类
+          </el-menu-item>
+        </router-link>
+
       </el-submenu>
 
       <el-menu-item index="4">

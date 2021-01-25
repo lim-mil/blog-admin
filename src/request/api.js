@@ -15,7 +15,7 @@ export const apiLogin = p => {
 }
 
 export const apiPosts = (page=1, step=20) => {
-  let url = "/posts/?" + "page=" + page + "&" + "step=" + step;
+  let url = "/posts?" + "page=" + page + "&" + "step=" + step;
   return get(url);
 }
 
@@ -26,5 +26,35 @@ export const apiPost = (post_id) => {
 
 export const apiPostCategoriesSimple = () => {
   let url = "/posts/categories/simple";
+  return get(url);
+}
+
+export const apiPostCategories = () => {
+  let url = "/posts/categories";
+  return get(url);
+}
+
+export const apiPostCategory = (post_category_id) => {
+  let url = "/posts/categories/" + post_category_id;
+  return get(url);
+}
+
+export const apiProjects = () => {
+  let url = "/projects";
+  return get(url);
+}
+
+export const apiProject = (project_id) => {
+  let url = "/projects/" + project_id;
+  return get(url);
+}
+
+export const apiProjectCategoriesSimple = () => {
+  let url = "/projects/categories/simple";
+  return get(url);
+}
+
+export const apiProjectCategories = () => {
+  let url = "/projects/categories";
   return get(url);
 }
