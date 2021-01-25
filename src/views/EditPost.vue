@@ -76,7 +76,7 @@ export default {
 
     apiPostCategoriesSimple().then(response => {
       for (let i = 0; i < response.data.length; i++) {
-        this.post_categories_simple.push({value: response.data[i].value, label: response.data[i].name});
+        this.post_categories_simple.push({value: response.data[i].id, label: response.data[i].name});
       }
     })
   }

@@ -45,7 +45,16 @@ export default {
   name: "EditProject",
   data() {
     return {
-      project: {},
+      project: {
+        name: "",
+        description: "",
+        link: "",
+        status: "",
+        category: {
+          id: "",
+          name: ""
+        }
+      },
       project_categories_simple: [],
       project_status_options: [
         {
@@ -71,7 +80,7 @@ export default {
     apiProjectCategoriesSimple().then(response => {
       let categories = response.data;
       for (let i = 0; i < categories.length; i++) {
-        this.project_categories_simple.append({label: categories[i].name, value: categories[i].id})
+        this.project_categories_simple.push({label: categories[i].name, value: categories[i].id});
       }
     })
   }

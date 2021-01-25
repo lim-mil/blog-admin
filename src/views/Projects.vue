@@ -4,7 +4,7 @@
 
     </div>
 
-    <div class="main-content">
+    <div class="main-table">
       <el-table
           ref="filterTable"
           :data="projects"
@@ -113,7 +113,7 @@ export default {
   width 100%
   height 100%
 
-  .tools, .main-content
+  .tools, .main-table
     background-color #fff
     box-shadow 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
 
@@ -124,7 +124,7 @@ export default {
     line-height 5vh
     text-align center
 
-  .main-content
+  .main-table
     margin-top 1%
     width 100%
     height 95vh
