@@ -49,6 +49,11 @@ const routes = [
         name: "EditProject",
         component: () => import("../views/EditProject")
       },
+      {
+        path: "info",
+        name: "Info",
+        component: () => import("../views/Info")
+      }
     ]
   },
   {

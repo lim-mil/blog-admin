@@ -58,3 +58,8 @@ export const apiProjectCategories = () => {
   let url = "/projects/categories";
   return get(url);
 }
+
+export const apiInfo = () => {
+  let url = "/info";
+  return get(url);
+}

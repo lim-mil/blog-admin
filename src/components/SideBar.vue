@@ -54,10 +54,12 @@
 
       </el-submenu>
 
-      <el-menu-item index="4">
-        <i class="el-icon-menu"></i>
-        <span slot="title">个人信息</span>
-      </el-menu-item>
+      <router-link :to="{name: 'Info'}">
+        <el-menu-item index="4">
+          <i class="el-icon-menu"></i>
+          <span slot="title">个人信息</span>
+        </el-menu-item>
+      </router-link>
     </el-menu>
 
   </div>
