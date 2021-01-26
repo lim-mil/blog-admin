@@ -1,7 +1,33 @@
 <template>
   <div class="project-categories">
     <div class="tools">
-
+      <el-row :gutter="20">
+        <el-col :span="2">
+          <p>{{posts_num}} Posts</p>
+        </el-col>
+        <el-col :span="5">
+          <el-input placeholder="Search" v-model="input3" class="input-with-select">
+            <el-button slot="append" icon="el-icon-search" type="primary"></el-button>
+          </el-input>
+        </el-col>
+        <el-col :span="3">
+          <el-button type="primary" @click="show_table">New</el-button>
+        </el-col>
+        <el-col :span="10">
+          <el-row :gutter="10" :justify="end">
+            <el-col :span="10">
+              <el-select v-model="value" placeholder="Order BY">
+                <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+              </el-select>
+            </el-col>
+          </el-row>
+        </el-col>
+      </el-row>
     </div>
 
     <div class="main-table">
@@ -28,8 +54,8 @@
             width="180">
         </el-table-column>
         <el-table-column
-            prop="posts.length"
-            label="项目名"
+            prop="projects.length"
+            label="项目数量"
             :formatter="formatter">
         </el-table-column>
         <el-table-column label="操作">
@@ -67,6 +93,9 @@ export default {
   methods: {
     get_created(created) {
       return ts2str(created);
+    },
+    show_table() {
+
     }
   }
 }

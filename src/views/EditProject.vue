@@ -1,17 +1,17 @@
 <template>
   <div class="edit-project">
-    <el-form ref="form" :model="project" label-width="80px">
+    <el-form ref="form" :model="project_update" label-width="80px">
       <el-form-item label="项目名">
-        <el-input v-model="project.name"></el-input>
+        <el-input v-model="project_update.name"></el-input>
       </el-form-item>
       <el-form-item label="描述">
-        <el-input v-model="project.description"></el-input>
+        <el-input v-model="project_update.description"></el-input>
       </el-form-item>
       <el-form-item label="链接">
-        <el-input v-model="project.link"></el-input>
+        <el-input v-model="project_update.link"></el-input>
       </el-form-item>
       <el-form-item label="状态">
-        <el-select v-model="project.status">
+        <el-select v-model="project_update.status">
           <el-option
               v-for="item in project_status_options"
               :key="item.value"
@@ -21,7 +21,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="分类">
-        <el-select v-model="project.category.name">
+        <el-select v-model="project_update.category.name">
           <el-option
               v-for="item in project_categories_simple"
               :key="item.value"
@@ -31,7 +31,7 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">保存</el-button>
+        <el-button type="primary" @click="save_project">保存</el-button>
         <el-button>恢复</el-button>
       </el-form-item>
     </el-form>
@@ -39,13 +39,14 @@
 </template>
 
 <script>
-import {apiProject, apiProjectCategoriesSimple} from "@/request/api";
+import {apiProject, apiProjectCategoriesSimple, apiUpdateProject} from "@/request/api";
 
 export default {
   name: "EditProject",
   data() {
     return {
-      project: {
+      project: {},
+      project_update: {
         name: "",
         description: "",
         link: "",
@@ -75,6 +76,7 @@ export default {
   mounted() {
     apiProject(this.$route.params.project_id).then(response => {
       this.project = response.data;
+      this.project_update = JSON.parse(JSON.stringify(this.project));
     });
 
     apiProjectCategoriesSimple().then(response => {
@@ -83,6 +85,25 @@ export default {
         this.project_categories_simple.push({label: categories[i].name, value: categories[i].id});
       }
     })
+  },
+  methods: {
+    save_project() {
+      let keys = Object.keys(this.project);
+      let data = {};
+      for (let i = 0; i < keys.length; i++) {
+        if (keys[i] === "category") {
+          if (this.project.category.id !== this.project_update.category.id)
+            data.category_id = this.project_update.category.id;
+        }  else if (this.project[keys[i]] !== this.project_update[keys[i]]) {
+          data[keys[i]] = this.project_update[keys[i]];
+        }
+      }
+
+      apiUpdateProject(data, this.project.id).then(response => {
+        this.project = response.data;
+        this.project_update = JSON.parse(JSON.stringify(this.project));
+      })
+    }
   }
 }
 </script>
