@@ -5,6 +5,14 @@
     </div>
 
     <div class="main-table">
+      <el-dialog title="新的分类名" :visible.sync="dialog_visible" :modal-append-to-body="false">
+        <el-input v-model="new_post_catogory_name"></el-input>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="editNameCancel">取 消</el-button>
+          <el-button type="primary" @click="editName">确 定</el-button>
+        </div>
+      </el-dialog>
+
       <el-table
           ref="filterTable"
           :data="blog_categories"
@@ -52,7 +60,9 @@ export default {
   name: "BlogCategory",
   data: function () {
     return {
-      blog_categories: []
+      blog_categories: [],
+      dialog_visible: false,
+      new_post_catogory_name: ""
     }
   },
   mounted() {
@@ -62,7 +72,16 @@ export default {
   },
   methods: {
     handleEdit: function(index, row) {
-      this.$router.push({name: "EditPostCategory", params: {post_category_id: row.id}})
+      // this.$router.push({name: "EditPostCategory", params: {post_category_id: row.id}})
+      console.log(index, row);
+      this.dialog_visible = true;
+    },
+    editName: function() {
+      this.dialog_visible = false;
+    },
+    editNameCancel: function() {
+      this.new_post_catogory_name = "";
+      this.dialog_visible = false;
     }
   }
 }
