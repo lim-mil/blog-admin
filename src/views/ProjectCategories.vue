@@ -31,6 +31,15 @@
     </div>
 
     <div class="main-table">
+      <!--   封装成组件？   -->
+      <el-dialog title="新的分类名" :visible.sync="dialog_visible" :modal-append-to-body="false">
+        <el-input v-model="new_post_catogory_name"></el-input>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="editNameCancel">取 消</el-button>
+          <el-button type="primary" @click="editName">确 定</el-button>
+        </div>
+      </el-dialog>
+
       <el-table
           ref="filterTable"
           :data="project_categories"
@@ -77,12 +86,17 @@
 <script>
 import {apiProjectCategories} from "@/request/api";
 import {ts2str} from "../utils/time_tools";
+import {apiUpdateProjectCategory} from "../request/api";
 
 export default {
   name: "ProjectCategories",
   data() {
     return {
-      project_categories: []
+      project_categories: [],
+      dialog_visible: false,
+      new_post_catogory_name: "",
+      target_id: 0,
+      target_index: -1
     }
   },
   mounted() {
@@ -96,6 +110,30 @@ export default {
     },
     show_table() {
 
+    },
+    handleEdit: function(index, row) {
+      // 编辑、取消、确定 三个点击事件能否共享 el-table 中的数据？
+      this.target_id = row.id;
+      this.target_index = index;
+      this.dialog_visible = true;
+    },
+    editName: function() {
+      if (this.new_post_catogory_name !== "" && this.target_id > 0 && this.target_index > -1) {
+        let data = {"name": this.new_post_catogory_name};
+        apiUpdateProjectCategory(data, this.target_id).then(response => {
+          this.project_categories[this.target_index] = response.data;
+          this.target_id = 0;
+          this.new_post_catogory_name = "";
+          this.target_index = -1;
+        });
+      }
+      this.dialog_visible = false;
+    },
+    editNameCancel: function() {
+      this.new_post_catogory_name = "";
+      this.target_id = 0;
+      this.target_index = -1;
+      this.dialog_visible = false;
     }
   }
 }
