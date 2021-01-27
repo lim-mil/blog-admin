@@ -73,3 +73,13 @@ export const apiUpdateProject = (projecct_update, project_id) => {
   let url = "/projects/" + project_id;
   return patch(url, projecct_update);
 }
+
+export const apiUpdatePostCategory = (post_category_update, post_category_id) => {
+  let url = "/posts/categories/" + post_category_id;
+  return patch(url, post_category_update);
+}
+
+export const apiUpdateProjectCategory = (project_category_update, project_category_id) => {
+  let url = "/projects/categories/" + project_category_id;
+  return patch(url, project_category_update);
+}

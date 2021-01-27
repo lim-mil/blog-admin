@@ -15,7 +15,7 @@
 
       <el-table
           ref="filterTable"
-          :data="blog_categories"
+          :data="post_categories"
           style="width: 100%">
         <el-table-column
             prop="created"
@@ -55,32 +55,48 @@
 
 <script>
 import {apiPostCategories} from "@/request/api";
+import {apiUpdatePostCategory} from "../request/api";
 
 export default {
   name: "BlogCategory",
   data: function () {
     return {
-      blog_categories: [],
+      post_categories: [],
       dialog_visible: false,
-      new_post_catogory_name: ""
+      new_post_catogory_name: "",
+      target_id: 0,
+      target_index: -1
     }
   },
   mounted() {
     apiPostCategories().then(response => {
-      this.blog_categories = response.data;
+      this.post_categories = response.data;
     })
   },
   methods: {
+    // 下面三个应该有更好的实现方式？
     handleEdit: function(index, row) {
-      // this.$router.push({name: "EditPostCategory", params: {post_category_id: row.id}})
-      console.log(index, row);
+      // 编辑、取消、确定 三个点击事件能否共享 el-table 中的数据？
+      this.target_id = row.id;
+      this.target_index = index;
       this.dialog_visible = true;
     },
     editName: function() {
+      if (this.new_post_catogory_name !== "" && this.target_id > 0 && this.target_index > -1) {
+        let data = {"name": this.new_post_catogory_name};
+        apiUpdatePostCategory(data, this.target_id).then(response => {
+          this.post_categories[this.target_index] = response.data;
+          this.target_id = 0;
+          this.new_post_catogory_name = "";
+          this.target_index = -1;
+        });
+      }
       this.dialog_visible = false;
     },
     editNameCancel: function() {
       this.new_post_catogory_name = "";
+      this.target_id = 0;
+      this.target_index = -1;
       this.dialog_visible = false;
     }
   }
