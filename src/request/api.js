@@ -1,6 +1,6 @@
 // import {post} from "./http"
 import axios from "axios";
-import {get} from "./http";
+import {get, patch} from "./http";
 
 export const apiLogin = p => {
   let config = {
@@ -62,4 +62,14 @@ export const apiProjectCategories = () => {
 export const apiInfo = () => {
   let url = "/info";
   return get(url);
+}
+
+export const apiUpdatePost = (post_update, post_id) => {
+  let url = "/posts/" + post_id;
+  return patch(url, post_update);
+}
+
+export const apiUpdateProject = (projecct_update, project_id) => {
+  let url = "/projects/" + project_id;
+  return patch(url, projecct_update);
 }

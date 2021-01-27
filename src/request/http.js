@@ -5,6 +5,7 @@ import router from "../router"
 
 axios.defaults.baseURL = "http://localhost:7331/api/v1";
 axios.defaults.headers.post['Content-Type'] = "application/json";
+axios.defaults.headers.patch['Content-Type'] = "application/json";
 axios.defaults.timeout = 10000;
 
 // 验证 request 拦截器
@@ -73,7 +74,17 @@ export function post(url, params) {
     axios.post(url, QS.stringify(params)).then(res => {
       resolve(res.data);
     }).catch(error => {
-      reject(error);
+      reject(error.data);
+    })
+  })
+}
+
+export function patch(url, params) {
+  return new Promise((resolve, reject) => {
+    axios.patch(url, params).then(res => {
+      resolve(res.data);
+    }).catch(err => {
+      reject(err.data);
     })
   })
 }

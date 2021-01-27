@@ -28,7 +28,6 @@
           </el-row>
         </el-col>
       </el-row>
-
     </div>
     <div class="main-table">
       <el-table
