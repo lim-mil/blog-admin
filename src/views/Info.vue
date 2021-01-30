@@ -1,5 +1,15 @@
 <template>
   <div class="info">
+    <el-upload
+        class="avatar-uploader"
+        :action="upload_url"
+        :show-file-list="false"
+        :http-request="uploadImage"
+        :before-upload="beforeAvatarUpload">
+      <img v-if="image_url" :src="image_url" class="avatar">
+      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+    </el-upload>
+
     <el-form ref="form" :model="info" label-width="80px">
       <el-form-item label="网名">
         <el-input v-model="info.name"></el-input>
@@ -25,13 +35,45 @@
 </template>
 
 <script>
-import {apiInfo} from "../request/api";
+  import {apiInfo, apiUploadImage} from "../request/api";
+import CONFIG from "../config";
 
 export default {
   name: "Info",
   data() {
     return {
-      info: {}
+      info: {},
+      image: null,
+      image_url: CONFIG.BASE_SERVER + CONFIG.MEDIA_API + "/img/limyel.jpg",
+      upload_url: CONFIG.BASE_SERVER + CONFIG.BASE_API + "/info/image",
+    }
+  },
+  methods: {
+    // 上传图片无法后，前端无法即时更新
+    uploadImage(file) {
+      if (this.image) {
+        apiUploadImage(file).then(response => {
+          if (response.code == 200) {
+            this.image = null;
+          }
+        });
+        this.image = null;
+      }
+    },
+    beforeAvatarUpload(file) {
+      console.log(file);
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+
+      this.image = file;
+      return isJPG && isLt2M;
     }
   },
   mounted() {
@@ -57,4 +99,35 @@ export default {
     padding-bottom 3%
 
     font-size 1.5em
+
+    .img-show
+      width 50%
+      margin-bottom 5%
+
+  .avatar-uploader .el-upload {
+    margin-bottom 5%
+    width 16%
+    margin-left 20%
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
 </style>

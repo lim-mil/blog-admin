@@ -6,8 +6,7 @@
     <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
+
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b">
@@ -51,15 +50,24 @@
             项目分类
           </el-menu-item>
         </router-link>
-
       </el-submenu>
 
-      <router-link :to="{name: 'Info'}">
-        <el-menu-item index="4">
-          <i class="el-icon-menu"></i>
-          <span slot="title">个人信息</span>
-        </el-menu-item>
-      </router-link>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>其他</span>
+        </template>
+        <router-link :to="{name: 'Info'}">
+          <el-menu-item index="4-1">
+            个人信息
+          </el-menu-item>
+        </router-link>
+        <router-link :to="{name: 'Blogrols'}">
+          <el-menu-item index="4-2">
+            友链
+          </el-menu-item>
+        </router-link>
+      </el-submenu>
     </el-menu>
 
   </div>

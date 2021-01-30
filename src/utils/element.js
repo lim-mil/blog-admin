@@ -23,7 +23,8 @@ import {
   Tag,
   Form,
   FormItem,
-  Dialog
+  Dialog,
+  Upload
 } from 'element-ui'
 
 Vue.use(Container)
@@ -50,3 +51,4 @@ Vue.use(Tag)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Dialog)
+Vue.use(Upload)

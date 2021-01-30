@@ -74,12 +74,30 @@ export const apiUpdateProject = (projecct_update, project_id) => {
   return patch(url, projecct_update);
 }
 
-export const apiUpdatePostCategory = (post_category_update, post_category_id) => {
+export const apiUpdatePostCategory = (post_category, post_category_id) => {
   let url = "/posts/categories/" + post_category_id;
-  return patch(url, post_category_update);
+  return patch(url, post_category);
 }
 
-export const apiUpdateProjectCategory = (project_category_update, project_category_id) => {
+export const apiUpdateProjectCategory = (project_category, project_category_id) => {
   let url = "/projects/categories/" + project_category_id;
-  return patch(url, project_category_update);
+  return patch(url, project_category);
+}
+
+export const apiUpdateInfo = (info) => {
+  let url = "/info";
+  return patch(url, info);
+}
+
+export const apiUploadImage = (file) => {
+  let url = "/info/image";
+  let config = {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  }
+  let data = new FormData();
+  data.append("image", file.file);
+
+  return axios.post(url, data, config);
 }
