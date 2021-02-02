@@ -1,6 +1,6 @@
 // import {post} from "./http"
 import axios from "axios";
-import {get, patch, post} from "./http";
+import {delete_, get, patch, post} from "./http";
 
 export const apiLogin = p => {
   let config = {
@@ -104,6 +104,30 @@ export const apiUploadImage = (file) => {
 
 export const apiCreatePost = (post_) => {
   let url = "/posts";
-  console.log(post_);
   return post(url, post_);
+}
+
+export const apiCreateProject = (project) => {
+  let url = "/projects";
+  return post(url, project);
+}
+
+export const apiDeleteProject = (id) => {
+  let url = "/projects/" + id;
+  return delete_(url);
+}
+
+export const apiDeletePost = (id) => {
+  let url = "/posts/" + id;
+  return delete_(url);
+}
+
+export const apiDeleteProjectCategory = (id) => {
+  let url = "/projects/categories" + id;
+  return delete_(url);
+}
+
+export const apiDeletePostCategory = (id) => {
+  let url = "/posts/categories" + id;
+  return delete_(url);
 }

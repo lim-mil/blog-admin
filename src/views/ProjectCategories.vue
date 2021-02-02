@@ -75,7 +75,7 @@
             <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="delete_project_category(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -86,7 +86,7 @@
 <script>
 import {apiProjectCategories} from "@/request/api";
 import {ts2str} from "../utils/time_tools";
-import {apiUpdateProjectCategory} from "../request/api";
+import {apiDeleteProjectCategory, apiUpdateProjectCategory} from "../request/api";
 
 export default {
   name: "ProjectCategories",
@@ -134,6 +134,9 @@ export default {
       this.target_id = 0;
       this.target_index = -1;
       this.dialog_visible = false;
+    },
+    delete_project_category(index, row) {
+      apiDeleteProjectCategory(row.id);
     }
   }
 }

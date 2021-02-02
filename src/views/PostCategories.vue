@@ -45,7 +45,7 @@
             <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="delete_post_category(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -55,7 +55,7 @@
 
 <script>
 import {apiPostCategories} from "@/request/api";
-import {apiUpdatePostCategory} from "../request/api";
+import {apiDeletePostCategory, apiUpdatePostCategory} from "../request/api";
 
 export default {
   name: "BlogCategory",
@@ -98,6 +98,9 @@ export default {
       this.target_id = 0;
       this.target_index = -1;
       this.dialog_visible = false;
+    },
+    delete_post_category(index, row) {
+      apiDeletePostCategory(row.id);
     }
   }
 }

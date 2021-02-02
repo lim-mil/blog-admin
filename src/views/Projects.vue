@@ -11,7 +11,9 @@
           </el-input>
         </el-col>
         <el-col :span="3">
-          <el-button type="primary">New</el-button>
+          <router-link :to="{name: 'CreateProject'}">
+            <el-button type="primary">New</el-button>
+          </router-link>
         </el-col>
         <el-col :span="10">
           <el-row :gutter="10" :justify="end">
@@ -81,7 +83,7 @@
             <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="delete_project(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -92,6 +94,7 @@
 <script>
 import {apiProjects} from "@/request/api";
 import {ts2str} from "@/utils/time_tools";
+import {apiDeleteProject} from "../request/api";
 
 export default {
   name: "ProjectProjects",
@@ -126,6 +129,10 @@ export default {
     },
     handleEdit: function(index, row) {
       this.$router.push({name: "EditProject", params: {project_id: row.id}})
+    },
+    // eslint-disable-next-line no-unused-vars
+    delete_project(index, row) {
+      apiDeleteProject(row.id);
     }
   },
   computed: {
@@ -145,7 +152,7 @@ export default {
 
   .tools
     width 100%
-    height 5vh
+    height 6%
     padding 1%
     line-height 5vh
     text-align center
@@ -153,8 +160,8 @@ export default {
   .main-table
     margin-top 1%
     width 100%
-    height 95vh
-    padding 1%
+    height 90%
+    padding 0 2%
     overflow auto
 
 </style>

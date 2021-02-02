@@ -69,7 +69,7 @@
             <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="delete_post(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import {apiPosts} from "../request/api";
+  import {apiDeletePost, apiPosts} from "../request/api";
 
 export default {
   name: "BlogPosts",
@@ -132,6 +132,9 @@ export default {
   methods: {
     handleEdit: function(index, row) {
       this.$router.push({name: "EditPost", params: {post_id: row.id}})
+    },
+    delete_post(index, row) {
+      apiDeletePost(row.id);
     }
   },
   computed: {
