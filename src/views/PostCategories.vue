@@ -1,7 +1,33 @@
 <template>
   <div class="post-categories">
     <div class="tools">
-
+      <el-row :gutter="20">
+        <el-col :span="2">
+          <p>{{posts_num}} Posts</p>
+        </el-col>
+        <el-col :span="5">
+          <el-input placeholder="Search" v-model="input3" class="input-with-select">
+            <el-button slot="append" icon="el-icon-search" type="primary"></el-button>
+          </el-input>
+        </el-col>
+        <el-col :span="3">
+          <el-button type="primary" @click="show_create_table">New</el-button>
+        </el-col>
+        <el-col :span="10">
+          <el-row :gutter="10" :justify="end">
+            <el-col :span="10">
+              <el-select v-model="value" placeholder="Order BY">
+                <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+              </el-select>
+            </el-col>
+          </el-row>
+        </el-col>
+      </el-row>
     </div>
 
     <div class="main-table">
@@ -10,6 +36,14 @@
         <div slot="footer" class="dialog-footer">
           <el-button @click="editNameCancel">取 消</el-button>
           <el-button type="primary" @click="editName">确 定</el-button>
+        </div>
+      </el-dialog>
+
+      <el-dialog title="创建新的分类" :visible.sync="create_dialog_visible" :modal-append-to-body="false">
+        <el-input v-model="new_post_catogory_name"></el-input>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="editNameCancel">取 消</el-button>
+          <el-button type="primary" @click="create_project_category">确 定</el-button>
         </div>
       </el-dialog>
 
@@ -55,7 +89,7 @@
 
 <script>
 import {apiPostCategories} from "@/request/api";
-import {apiDeletePostCategory, apiUpdatePostCategory} from "../request/api";
+import {apiCreatePostCategory, apiDeletePostCategory, apiUpdatePostCategory} from "../request/api";
 
 export default {
   name: "BlogCategory",
@@ -65,7 +99,8 @@ export default {
       dialog_visible: false,
       new_post_catogory_name: "",
       target_id: 0,
-      target_index: -1
+      target_index: -1,
+      create_dialog_visible: false
     }
   },
   mounted() {
@@ -101,6 +136,18 @@ export default {
     },
     delete_post_category(index, row) {
       apiDeletePostCategory(row.id);
+    },
+    create_project_category() {
+      if (this.new_post_catogory_name !== "") {
+        // eslint-disable-next-line no-unused-vars
+        apiCreatePostCategory({name: this.new_post_catogory_name}).then(response => {
+          this.new_post_catogory_name = "";
+          this.create_dialog_visible = false;
+        });
+      }
+    },
+    show_create_table() {
+      this.create_dialog_visible = true;
     }
   }
 }

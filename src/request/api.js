@@ -123,11 +123,21 @@ export const apiDeletePost = (id) => {
 }
 
 export const apiDeleteProjectCategory = (id) => {
-  let url = "/projects/categories" + id;
+  let url = "/projects/categories/" + id;
   return delete_(url);
 }
 
 export const apiDeletePostCategory = (id) => {
-  let url = "/posts/categories" + id;
+  let url = "/posts/categories/" + id;
   return delete_(url);
+}
+
+export const apiCreateProjectCategory = (category) => {
+  let url = "/projects/categories";
+  return post(url, category);
+}
+
+export const apiCreatePostCategory = (category) => {
+  let url = "/posts/categories";
+  return post(url, category);
 }
