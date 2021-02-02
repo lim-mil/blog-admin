@@ -1,6 +1,6 @@
 // import {post} from "./http"
 import axios from "axios";
-import {get, patch} from "./http";
+import {get, patch, post} from "./http";
 
 export const apiLogin = p => {
   let config = {
@@ -100,4 +100,10 @@ export const apiUploadImage = (file) => {
   data.append("image", file.file);
 
   return axios.post(url, data, config);
+}
+
+export const apiCreatePost = (post_) => {
+  let url = "/posts";
+  console.log(post_);
+  return post(url, post_);
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import Vue from "vue";
-import QS from "qs";
+// import QS from "qs";
 import router from "../router"
 import CONFIG from "../config"
 
@@ -72,7 +72,7 @@ export function get(url, params) {
  */
 export function post(url, params) {
   return new Promise((resolve, reject) => {
-    axios.post(url, QS.stringify(params)).then(res => {
+    axios.post(url, params).then(res => {
       resolve(res.data);
     }).catch(error => {
       reject(error.data);
