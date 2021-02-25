@@ -93,7 +93,7 @@ export const apiUploadImage = (file) => {
   let url = "/info/image";
   let config = {
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
+      "Content-Type": "multipart/form-data"
     }
   }
   let data = new FormData();

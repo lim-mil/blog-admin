@@ -1,6 +1,5 @@
 import axios from "axios";
 import Vue from "vue";
-// import QS from "qs";
 import router from "../router"
 import CONFIG from "../config"
 
