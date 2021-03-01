@@ -42,7 +42,13 @@ export default {
   name: "Info",
   data() {
     return {
-      info: {},
+      info: {
+        name: "",
+        description: "",
+        location: "",
+        job: "",
+        link: ""
+      },
       image: null,
       image_url: CONFIG.BASE_SERVER + CONFIG.MEDIA_API + "/img/limyel.jpg",
       upload_url: CONFIG.BASE_SERVER + CONFIG.BASE_API + "/info/image",
