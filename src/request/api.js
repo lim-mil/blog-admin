@@ -1,6 +1,7 @@
 // import {post} from "./http"
 import axios from "axios";
 import {delete_, get, patch, post} from "./http";
+import CONFIG from "@/config";
 
 export const apiLogin = p => {
   let config = {
@@ -11,7 +12,7 @@ export const apiLogin = p => {
   let data = new FormData();
   data.append("username", p.username);
   data.append("password", p.password);
-  return axios.post("http://127.0.0.1:7331/api/v1/user/token", data, config);
+  return axios.post(CONFIG.BASE_SERVER+CONFIG.BASE_API+"/user/token", data, config);
 }
 
 export const apiPosts = (page=1, step=20) => {
