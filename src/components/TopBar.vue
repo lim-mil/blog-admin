@@ -2,7 +2,7 @@
   <div class="top-bar">
     <ul class="top-menu">
       <li @click="logout">
-        <span class="userinfo">
+        <span class="userinfo" @click="logout">
           退出
         </span>
       </li>
