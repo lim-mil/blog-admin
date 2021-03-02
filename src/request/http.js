@@ -24,6 +24,7 @@ axios.interceptors.request.use(
 // 验证 response 拦截器
 axios.interceptors.response.use(
   response => {
+    console.log(response.data)
     return response;
   },
   error => {

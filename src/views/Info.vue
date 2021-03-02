@@ -27,7 +27,7 @@
         <el-input v-model="info.link"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">保存</el-button>
+        <el-button type="primary" @click="updateInfo">保存</el-button>
         <el-button>恢复</el-button>
       </el-form-item>
     </el-form>
@@ -80,6 +80,9 @@ export default {
 
       this.image = file;
       return isJPG && isLt2M;
+    },
+    updateInfo() {
+
     }
   },
   mounted() {
