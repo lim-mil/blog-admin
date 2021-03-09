@@ -7,13 +7,9 @@
       <el-form-item label="简述">
         <el-input v-model="description"></el-input>
       </el-form-item>
+
       <el-form-item label="内容">
-        <el-input
-            v-model="content"
-            type="textarea"
-            resize="none"
-            rows="20">
-        </el-input>
+        <mavon-editor v-model="content"/>
       </el-form-item>
       <el-form-item label="状态">
         <el-select v-model="status">
