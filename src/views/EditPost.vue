@@ -8,12 +8,13 @@
         <el-input v-model="post_update.description"></el-input>
       </el-form-item>
       <el-form-item label="内容">
-        <el-input
-          v-model="post_update.content"
-          type="textarea"
-          resize="none"
-          rows="20">
-        </el-input>
+        <mavon-editor v-model="post_update.content"/>
+<!--        <el-input-->
+<!--          v-model="post_update.content"-->
+<!--          type="textarea"-->
+<!--          resize="none"-->
+<!--          rows="20">-->
+<!--        </el-input>-->
       </el-form-item>
       <el-form-item label="状态">
         <el-select v-model="post_update.status">
